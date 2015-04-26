@@ -12,22 +12,24 @@ The actual compiled data is available within a zip file, available [here](https:
 
 
 The R script `run_analysis.R` (with the R package `dplyr`) takes the data  and transforms it based on the below steps:
-1. Merges the training and the test sets to create one data set.
-2. Extracts only the measurements on the mean and standard deviation for each measurement. 
-3. Uses descriptive activity names to name the activities in the data set
-4. Appropriately labels the data set with descriptive variable names. 
-5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+  1. Merges the training and the test sets to create one data set.
+  2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+  3. Uses descriptive activity names to name the activities in the data set
+  4. Appropriately labels the data set with descriptive variable names. 
+  5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 The R script assumes that the file can be run, as is, within a working directory.  No renaming of files should be done by the user.
 
 As the data sets do not have parent - foreign keys linking them together, the raw data is assumed to be ordered correctly as is (ie., x data, y data, and subject data are all matched correctly in their raw form).
+
+Measurements found within the x data are in units of triaxial angular velocity and triaxial acceleration.
 
 ### Step 1 - Merges the training and the test sets to create one data set.
 ===========
 The data is can be divided into three parts
 * subject data: ID of person who performed an activity, ranged 1 to 30
 * y data: ID of activity performed by subject
-* x data: measurement data of subject performing activity, from an accelerometer using the Samsung Galaxy S smartphone.  This data is in units of triaxial angular velocity.
+* x data: measurement data of subject performing activity, from an accelerometer using the Samsung Galaxy S smartphone.  Measurements found within the x data are in units of triaxial angular velocity and triaxial acceleration.
 
 Each set of data is further subdivided into `training` and `test` components.  
 
