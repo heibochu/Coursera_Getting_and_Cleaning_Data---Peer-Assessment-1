@@ -22,31 +22,24 @@ The R script assumes that the file can be run, as is, within a working directory
 
 Step 1 - Merges the training and the test sets to create one data set.
 ===========
-The data is can be divided into three parts
-* subject data: ID of person who performed an activity, ranged 1 to 30
-* y data: ID of activity performed by subject
-* x data: measurement data of subject performing activity, from an accelerometer using the Samsung Galaxy S smartphone
-
-Each set of data is further subdivided into 'training' and 'test' components.  
-
-In this step, 'run_analysis.R' combines the test and training subdivisions into single, whole data sets.
+* 'test.x', 'test.y', 'test.subject': dataframes representing test data of the study
+* 'train.x', 'train.y', train.subject': dataframes representing training data of the study
+* 'data.x', 'data.y', 'data.subject': dataframes which combine the test and training data sets into one
 
 Step 2 - Extracts only the measurements on the mean and standard deviation for each measurement.
 ===========
-The measurement data within the x data set contain many different kinds of measurements, each column representing an unnamed variable.
-
-Using a data set called 'features', 'run_analysis.R' names all columns and takes the subset of measures for 'mean' and 'standard deviation ('std').
+* 'data.feat': dataframe which represents the measurement descriptor for the 561 measurements in the x data set.
+* 'data.xformatted': the x data set 'data.x', with named columns, subsetted strictly to mean and std data.
 
 Step 3 - Uses descriptive activity names to name the activities in the data set.
 ===========
-The activities in the y data set are uniquely identified by ID.
-
-'run_analysis.R' uses data from a data set called 'activities' and mutates each ID into a descriptor describing the activity.
+* 'data.activity': dataframe which represents the 6 activities that were performed within the y data set.
+* 'data.yformatted': the y data set 'data.y', with named columns, the activity ID's mutated to actual descriptors.
 
 Step 4 - Appropriately labels the data set with descriptive variable names. 
 ===========
-At this point, the x data, y data, and subject data sets are combined into one whole tidy data set.  Each column is given a descriptor describing the variables they represent.
+* 'data.full': dataframe which represents a tidy data set combining 'data.xformatted', 'data.yformatted', and 'data.subject'
 
 Step 5 - From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 ===========
-The tidy data set that was created in Step 4 is then summarized using the 'dplyr' package.  Each measure is averaged and grouped by 'subject' and 'activity'.
+* 'data.avg': dataframe which summarizes 'data.full' by getting the average mean of all measurement variables, grouped by subject and activity.
