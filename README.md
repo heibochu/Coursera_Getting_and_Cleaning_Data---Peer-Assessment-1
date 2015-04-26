@@ -20,12 +20,14 @@ The R script `run_analysis.R` (with the R package `dplyr`) takes the data  and t
 
 The R script assumes that the file can be run, as is, within a working directory.  No renaming of files should be done by the user.
 
+As the data sets do not have parent - foreign keys linking them together, the raw data is assumed to be ordered correctly as is (ie., x data, y data, and subject data are all matched correctly in their raw form).
+
 ### Step 1 - Merges the training and the test sets to create one data set.
 ===========
 The data is can be divided into three parts
 * subject data: ID of person who performed an activity, ranged 1 to 30
 * y data: ID of activity performed by subject
-* x data: measurement data of subject performing activity, from an accelerometer using the Samsung Galaxy S smartphone
+* x data: measurement data of subject performing activity, from an accelerometer using the Samsung Galaxy S smartphone.  This data is in units of triaxial angular velocity.
 
 Each set of data is further subdivided into `training` and `test` components.  
 

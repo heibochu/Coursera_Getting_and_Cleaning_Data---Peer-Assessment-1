@@ -17,7 +17,7 @@ if (!file.exists(datafile)) {
   dir.create(dir.data, showWarnings = FALSE)
   
   fileURL <- 'https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'
-  zipfile <- file.path(dir.data, dir.datasource, basename(fileURL))
+  zipfile <- file.path(dir.data, basename(fileURL))
   
   # download zip file to data folder and unzip text file in data folder
   download.file(fileURL, destfile = zipfile)
